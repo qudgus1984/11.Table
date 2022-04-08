@@ -7,6 +7,9 @@
 
 import UIKit
 
+var items = ["책 구매", "철수와 약속", "스터디 준비하기"] // 외부 변수인 items의 내용을 각각 지정
+var itemsImageFile = ["cart.png", "clock.png", "pencil.png"] // 외부 변수인 이미지 파일
+
 class TableViewController: UITableViewController {
 
     @IBOutlet var tvListView: UITableView!
@@ -24,23 +27,25 @@ class TableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1 // 보통은 테이블 안에 섹션이 한 개이므로 리턴값을 1로 해줌
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return items.count // 섹션당 열의 개수는 Items 개수이므로 리턴값을 items.count로 함
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
 
-        // Configure the cell...
-
+        cell.textLabel?.text = items[(indexPath as NSIndexPath).row]
+        // 셀의 텍스트 레이블에 앞에서 선언한 items("책 구매", "철수와의 약속", 스터디 준비하기)을 대입
+        cell.imageView?.image = UIImage(named: itemsImageFile[(indexPath as NSIndexPath).row])
+        // 셀의 이미지 뷰에 앞에서 선언한 itemFile("cart.png", "clock.png", "pencil.png")을 대입
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
